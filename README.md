@@ -1,5 +1,5 @@
 ## TCVC: Temporally Coherent Video Colorization
-[ArXiv](https://arxiv.org/abs/1904.09527) | [BibTex](#citation)
+[ArXiv](https://arxiv.org/abs/1904.09527)
 
 ### Introduction:
 We develop a new approach to automatically colorize line art/greyscale anime episode frames to a temporally coherent video using an end-to-end GAN based learning framework. In the animation industry, heavy workloads and overtime are the norm for young artists. When between 3000 to 10000 frames need to be individually animated for a single episode, the work needs to be distributed and outsourced which leads to slow turn around. This method is our initial foray at producing an algorithm that could benefit animation studios and reduce workloads. We mimic lineart using Canny edge detection and adapt a training scheme to preserve temporal information between generated frames to mitigate the flicker effect that exists when using GANs to generate individual frames for video. Detailed information of our work can be found in our [paper](https://arxiv.org/abs/1904.09527).
@@ -47,3 +47,6 @@ python train.py \
   --checkpoint_path_D [loading a pretrained discriminator] \
   --batchSize [size of batch] \
 ```
+
+## Citation
+If you use this code for your research, please cite our paper <a href="https://arxiv.org/abs/1904.09527">TCVC: Temporally Coherent Video Colorization</a>:
