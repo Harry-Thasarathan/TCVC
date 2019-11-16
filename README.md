@@ -4,6 +4,16 @@
 ### Introduction:
 We develop a new approach to automatically colorize line art/greyscale anime episode frames to a temporally coherent video using an end-to-end GAN based learning framework. In the animation industry, heavy workloads and overtime are the norm for young artists. When between 3000 to 10000 frames need to be individually animated for a single episode, the work needs to be distributed and outsourced which leads to slow turn around. This method is our initial foray at producing an algorithm that could benefit animation studios and reduce workloads. We mimic lineart using Canny edge detection and adapt a training scheme to preserve temporal information between generated frames to mitigate the flicker effect that exists when using GANs to generate individual frames for video. Detailed information of our work can be found in our [paper](https://arxiv.org/abs/1904.09527).
 
+<p align='center'>  
+  <img src='images/fig2.jpg' width='500'/>
+</p>
+
+(Left) Ground truth colored frames. (Middle) Computed sythetic linearts. Edges drawn in black are computed using Canny edge detector. (Right) Colored frame prediction produced by generator.
+
+<p align='center'>  
+  <img src='images/fig3.jpg' width='800'/>
+</p>
+
 ## Prerequisites
 - Python 3
 - PyTorch 1.0
