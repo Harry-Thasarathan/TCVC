@@ -31,7 +31,7 @@ cd TCVC
 pip install -r requirements.txt
 ```
 ### Dataset:
-In order to train our automatic video colorization network for anime, we generate a dataset of 60k frames from about 8 episodes of season 1 of the original Dragonball TV show obtained from legal sources. To do so we wrote a script [FrameExtraction.py]('FrameExtraction.py') in which a path to the video file and output folder for the extracted frames can be specified.
+In order to train our automatic video colorization network for anime, we generate a dataset of 60k frames from about 8 episodes of season 1 of the original Dragonball TV show obtained from legal sources. To do so we wrote a script [FrameExtraction.py]('FrameExtraction.py') in which a path to the video file and output folder for the extracted frames can be specified. You can use the same script to extract frames for your own favorite tv show episodes by specifying the video file paths. 
 ```bash
 python FrameExtraction.py --video_path [video path] --output_path [output path]
 ```
