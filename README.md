@@ -30,3 +30,20 @@ cd TCVC
 ```bash
 pip install -r requirements.txt
 ```
+### Dataset:
+In order to train our automatic video colorization network for anime, we generate a dataset of 60k frames from about 8 episodes of season 1 of the original Dragonball TV show obtained from legal sources. To do so we wrote a script [FrameExtraction.py]('FrameExtraction.py') in which a path to the video file and output folder for the extracted frames can be specified.
+```bash
+python FrameExtraction.py --video_path [video path] --output_path [output path]
+```
+
+### Training
+To train the model, place the dataset folder in the same folder of your repository which will be used as the root path during training and testing. Run the following in terminal to begin the training process. Checkpoints are saved every epoch by default and samples are produced in the root directory every 250 iterations. Refer to the argument parser in [Train.py]('Train.py') for more configurability options. 
+```bash
+python train.py \
+  --root [path to root directory (location of repo)] \
+  --dataset [name of dataset folder in root directory] \
+  --logfile [name of logfile to be generated to keep track of losses] \
+  --checkpoint_path_G [loading a pretrained generator] \
+  --checkpoint_path_D [loading a pretrained discriminator] \
+  --batchSize [size of batch] \
+```
