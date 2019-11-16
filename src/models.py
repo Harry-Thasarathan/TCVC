@@ -214,3 +214,40 @@ def spectral_norm(module, mode=True):
         return nn.utils.spectral_norm(module)
 
     return module
+
+def define_G(input_nc, output_nc, ngf, use_dropout=True, gpu_ids=[]):
+    netG = None
+    use_gpu = len(gpu_ids) > 0
+    #norm_layer = get_norm_layer(norm_type=norm)
+
+    if use_gpu:
+        assert(torch.cuda.is_available())
+
+    #netG = ResnetGenerator(input_nc, output_nc, ngf, norm_layer=norm_layer, use_dropout=use_dropout, n_blocks=9, gpu_ids=gpu_ids)
+    netG = InpaintGenerator()
+
+    if len(gpu_ids) > 0:
+        netG.cuda(gpu_ids[0])
+    #netG.apply(weights_init)
+    return netG
+
+
+def define_D(input_nc, ndf, use_sigmoid=True, gpu_ids=[]):
+    netD = None
+    use_gpu = len(gpu_ids) > 0
+    if use_gpu:
+        assert(torch.cuda.is_available())
+
+    netD = Discriminator(in_channels=7, use_sigmoid= True)
+    if use_gpu:
+        netD.cuda(gpu_ids[0])
+    
+    return netD
+
+
+def print_network(net):
+    num_params = 0
+    for param in net.parameters():
+        num_params += param.numel()
+    print(net)
+    print('Total number of parameters: %d' % num_params)

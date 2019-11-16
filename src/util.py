@@ -207,3 +207,10 @@ class Progbar(object):
 
     def add(self, n, values=None):
         self.update(self._seen_so_far + n, values)
+        
+def load(checkpoint_path_G, checkpoint_path_D, netG, netD):
+    checkpoint_G = torch.load(checkpoint_path_G)
+    checkpoint_D = torch.load(checkpoint_path_D)  
+    netG.load_state_dict(checkpoint_G['generator'])
+    netD.load_state_dict(checkpoint_D['discriminator'])
+    return netG, netD, optimizerG, optimizerD

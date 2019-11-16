@@ -8,7 +8,7 @@ import torchvision.transforms as transforms
 
 from skimage import io, feature, color, img_as_uint, util
 from skimage.transform import resize
-from util import is_image_file, load_img
+from .util import is_image_file, load_img
 
 
 class DatasetFromFolder(data.Dataset):
@@ -25,14 +25,17 @@ class DatasetFromFolder(data.Dataset):
             target_path = join(self.photo_path, self.image_filenames[index])
             frame_num = target_path.split("e")[-1]
             frame_num = int(frame_num.split(".")[0]) - 1
-            frame_prev = self.get_prev(frame_num) #will be either black or colored
+            #will be either black or colored
+            frame_prev = self.get_prev(frame_num) 
             target = load_img(target_path)
             input = color.rgb2gray(target)
-            #needed for lineart only not grayscale
+            '''
+            #Lineart
             input = feature.canny(input,sigma = 1)
             input = util.invert(input)
             input = Image.fromarray(np.uint8(input)*255)
-            #input = Image.fromarray(input)
+            '''
+            input = Image.fromarray(input)
             frame_prev = self.transform(frame_prev)
             target = self.transform(target)
             input = self.transform(input)
@@ -58,4 +61,4 @@ class DatasetFromFolder(data.Dataset):
                 prev = Image.new("RGB",[256,256])
 
             return prev
-            #frame_1 = join(self.photo_path,"frame"+str(frame_num)+".jpg")
+            
